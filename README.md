@@ -1,31 +1,76 @@
-# 📊 Compilador de NFS-e Nacional (`XML` $\rightarrow$ `Excel Dinâmico`)
+# 📊 Suíte NFS-e Nacional: Extrator em Lote (Extensão) & Compilador Fiscal (`XML` $\rightarrow$ `Excel Dinâmico`)
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Chrome Extension](https://img.shields.io/badge/Extens%C3%A3o_Navegador-Manifest_V3-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)
 ![OpenPyXL](https://img.shields.io/badge/Excel-OpenPyXL-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
 ![SPED NFS-e](https://img.shields.io/badge/Padr%C3%A3o_SPED-NFS--e_v1.01-1F4E79?style=for-the-badge)
 ![License](https://img.shields.io/badge/Licen%C3%A7a-MIT-green?style=for-the-badge)
 
-[![Baixar Executável Windows](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_BAIXAR_APLICATIVO_(WINDOWS)-Compilador__NFSe.exe-1B6B53?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/icaro-arch/compilador_NFSe/raw/main/Compilador_NFSe.exe)
+[![Baixar Executável Windows](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_BAIXAR_COMPILADOR_(WINDOWS)-Compilador__NFSe.exe-1B6B53?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/icaro-arch/compilador_NFSe/raw/main/Compilador_NFSe.exe)
+[![Ver Extensão Extrator NFS-e](https://img.shields.io/badge/%F0%9F%A7%A9_EXTENS%C3%83O_DE_NAVEGADOR-extrator__NFSe-0F3566?style=for-the-badge&logo=googlechrome&logoColor=white)](./extrator_NFSe)
 
-Aplicação desktop em Python para leitura, auditoria fiscal e consolidação de lotes de **Notas Fiscais de Serviços Eletrônicas (NFS-e)** emitidas no **Padrão Nacional SPED (`nfse.gov.br`)**, gerando pastas de trabalho **Excel (`.xlsx`)** estruturadas com **somas e contagens 100% dinâmicas sob filtro (`SUBTOTAL`)**, agrupamento funcional de colunas e demonstrativos executivos.
+Solução ponta a ponta para **coleta automatizada em lote** e **auditoria fiscal/contábil** de **Notas Fiscais de Serviços Eletrônicas (NFS-e)** no **Padrão Nacional SPED (`nfse.gov.br`)**, composta por dois módulos integrados:
+
+1. **🧩 [`extrator_NFSe/`](./extrator_NFSe) (Extensão de Navegador — Manifest V3):** Automatiza a paginação, a filtragem por **Data de Emissão** e o download em lote de arquivos **XML**, **PDF (DANFSe)** e **Planilha Resumo (`.csv`)** em um único pacote `.zip` diretamente no **Painel Municipal da NFS-e** (`nfse.gov.br/PainelMunicipal/NFSe/Consulta`).
+2. **📊 [`Compilador_NFSe.exe`](https://github.com/icaro-arch/compilador_NFSe/raw/main/Compilador_NFSe.exe) / [`compilar_nfse.py`](compilar_nfse.py) (Aplicação Desktop Python):** Lê lotes de arquivos `.xml` (inclusive os baixados pelo Extrator) ou exportações `.csv` do ADN e gera pastas de trabalho **Excel (`.xlsx`)** executivas com **4 abas**, **70 colunas organizadas em 7 blocos** e **somas 100% dinâmicas sob filtro (`SUBTOTAL`)**.
 
 ---
 
-## 🚀 Como Utilizar (Pronto para Uso — Sem Instalar Nada)
+## 🏗️ Fluxo Integrado (Ponta a Ponta)
 
-Para quem deseja apenas usar o programa no Windows, **não é necessário instalar Python nem nenhuma biblioteca**:
+```mermaid
+flowchart LR
+    subgraph Portal["1. Coleta no Portal (extrator_NFSe)"]
+        P1["Painel Municipal\n(Sessão Autenticada)"] --> P2["Filtro por Data de Emissão\n+ Paginação Automática"]
+        P2 --> P3["Pacote NFSe_CNPJ_Data.zip\n(/xml, /pdf e resumo_notas.csv)"]
+    end
+
+    subgraph Compilador["2. Auditoria Avançada (Compilador_NFSe)"]
+        P3 --> A["Auto-Scan & Parser XML\n(UTF-8 / CP1252)"]
+        A --> C["Motor Fiscal & Contábil\n(ISSQN, Federais, IBS/CBS, Duplicatas)"]
+        C --> D["Planilha Executiva (.xlsx)\n(4 Abas + SUBTOTAL Dinâmico)"]
+    end
+```
+
+---
+
+## 🧩 Módulo 1: Extrator NFS-e (`extrator_NFSe/`) — Extensão de Navegador
+
+O Portal da NFS-e não possui função nativa para baixar todas as notas de um período de uma só vez. A extensão **Extrator NFS-e** injeta um painel flutuante em `https://www.nfse.gov.br/PainelMunicipal/NFSe/Consulta` para realizar a coleta em lote sem precisar clicar nota por nota.
+
+### Principais Recursos do Extrator:
+- **Autenticação Transparente (`Session Inheritance`):** Reaproveita sua sessão já logada (Certificado Digital A1/A3 ou Gov.br) sem nunca solicitar senhas ou chaves privadas.
+- **Filtro por Data de Emissão com Parada Inteligente (*Early Stop*):**
+  - Campo **"De" (Data Inicial):** Inicia em `"Desde sempre"` e permite escolher uma data específica no calendário (com botão `×` para limpar).
+  - Campo **"Até" (Data Final):** Preenchido automaticamente com a data de hoje.
+  - **Early Stop:** Como o portal não tem filtro nativo de data na listagem, a extensão lê a coluna de Data de Emissão linha a linha e **interrompe a paginação automaticamente** assim que alcança páginas anteriores à data inicial escolhida.
+- **Nomeação Automática por CPF/CNPJ:** Detecta o CPF/CNPJ consultado na página e sugere automaticamente `NFSe_{CPF_OU_CNPJ}_{DATA}` em um campo editável.
+- **Alta Velocidade & Compactação `.ZIP` em Memória:** Fila paralela otimizada (`2x` simultâneos com intervalo de `100 ms` e *retry* automático) que empacota `/xml`, `/pdf` e `resumo_notas.csv` em um único download `.zip`.
+
+### Como Instalar a Extensão no Chrome / Edge / Brave:
+1. Baixe ou clone este repositório no seu computador.
+2. No navegador, acesse `chrome://extensions/` (ou `edge://extensions/`).
+3. Ative a chave **Modo do desenvolvedor** (*Developer mode*) no canto superior direito.
+4. Clique em **Carregar sem compactação** (*Load unpacked*) e selecione a pasta [`extrator_NFSe`](./extrator_NFSe).
+5. Clique no ícone da extensão na barra do navegador para abrir diretamente `https://www.nfse.gov.br/PainelMunicipal/NFSe/Consulta`.
+
+---
+
+## 🚀 Módulo 2: Compilador de NFS-e (`Compilador_NFSe.exe`) — Pronto para Uso
+
+Para gerar a auditoria fiscal completa em Excel (`.xlsx`) a partir dos XMLs baixados no Windows, **não é necessário instalar Python nem nenhuma biblioteca**:
 
 ### Passo a Passo Rápido:
 1. **Baixe o programa:** Clique no link direto abaixo para baixar o executável:
    - 👉 **[📥 Clique aqui para baixar o `Compilador_NFSe.exe`](https://github.com/icaro-arch/compilador_NFSe/raw/main/Compilador_NFSe.exe)**
 2. **Abra o aplicativo:** Dê dois cliques no arquivo `Compilador_NFSe.exe` baixado *(caso o Windows exiba o aviso padrão do SmartScreen, clique em "Mais informações" → "Executar assim mesmo")*.
-3. **Escolha a pasta de XMLs ou o arquivo `.CSV` (ADN):** Clique em **"Procurar Pasta..."** (para selecionar uma pasta com notas em `.xml`) ou em **"Selecionar CSV / XML..."** (para selecionar um arquivo `.csv` exportado do Ambiente de Dados Nacional — ADN com XMLs embutidos).
+3. **Escolha a pasta de XMLs ou o arquivo `.CSV` (ADN):** Clique em **"Procurar Pasta..."** (para selecionar a pasta `xml/` extraída do `.zip` ou qualquer pasta com notas em `.xml`) ou em **"Selecionar CSV / XML..."** (para selecionar um arquivo `.csv` exportado do Ambiente de Dados Nacional — ADN com XMLs embutidos).
    - O programa fará a leitura instantânea das notas e **sugerirá automaticamente o nome do arquivo Excel** com base na empresa e competência identificadas.
 4. **Gere a planilha:** Clique no botão verde **"▶ COMPILAR NOTAS E GERAR EXCEL"** e, em seguida, em **"📊 Abrir Planilha no Excel"**.
 
 ---
 
-## 🎯 Principais Diferenciais
+## 🎯 Principais Diferenciais do Compilador Excel
 
 - **Interface Gráfica (`Tkinter`) com Pré-Leitura Inteligente (Auto-Scan):**
   - Ao selecionar uma pasta com arquivos `.xml`, o sistema inspeciona automaticamente o lote em milissegundos, exibindo em cards de diagnóstico:
@@ -41,18 +86,6 @@ Para quem deseja apenas usar o programa no Windows, **não é necessário instal
   - As colunas críticas para conferência fiscal e financeira ficam visíveis logo na abertura, enquanto dados cadastrais extensos (endereços, CEPs, telefones, e-mails e chaves de acesso) ficam agrupados com recurso nativo de *Outline Grouping* do Excel.
 - **Blindagem de Codificação e Higienização (`UTF-8` / `CP1252`):**
   - Tratamento automático contra *mojibake* e caracteres de controle inválidos, garantindo acentuação impecável em todos os campos.
-
----
-
-## 🏗️ Arquitetura e Fluxo de Processamento
-
-```mermaid
-flowchart LR
-    A["Lote de XMLs\n(nfse.gov.br v1.01)"] --> B["Auto-Scan & Parser XML\n(UTF-8 / CP1252)"]
-    B --> C["Motor Fiscal & Contábil\n(ISSQN, Federais, IBS/CBS, Duplicatas)"]
-    C --> D["Gerador Excel OpenPyXL\n(4 Abas + SUBTOTAL Dinâmico)"]
-    D --> E["Planilha Executiva (.xlsx)\n& Exportação (.csv opcional)"]
-```
 
 ---
 
