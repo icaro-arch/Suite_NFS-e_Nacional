@@ -4,7 +4,6 @@
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![OpenPyXL](https://img.shields.io/badge/Excel-OpenPyXL-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
 ![SPED NFS-e](https://img.shields.io/badge/Padr%C3%A3o_SPED-NFS--e_v1.01-1F4E79?style=for-the-badge)
-![License](https://img.shields.io/badge/Licen%C3%A7a-MIT-green?style=for-the-badge)
 
 [![Baixar Extensão Chrome/Edge](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_BAIXAR_EXTENS%C3%83O_(CHROME_%2F_EDGE)-Extrator__NFSe.zip-0F3566?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/icaro-arch/Suite_NFS-e_Nacional/raw/main/extrator_NFSe/Extrator_NFSe.zip)
 [![Baixar Compilador Windows](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_BAIXAR_COMPILADOR_(WINDOWS)-Compilador__NFSe.exe-1B6B53?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/icaro-arch/Suite_NFS-e_Nacional/raw/main/compilador_NFSe/Compilador_NFSe.exe)
