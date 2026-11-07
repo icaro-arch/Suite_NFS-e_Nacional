@@ -6,22 +6,22 @@
 ![SPED NFS-e](https://img.shields.io/badge/Padr%C3%A3o_SPED-NFS--e_v1.01-1F4E79?style=for-the-badge)
 ![License](https://img.shields.io/badge/Licen%C3%A7a-MIT-green?style=for-the-badge)
 
-[![Baixar Extensão Chrome/Edge](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_BAIXAR_EXTENS%C3%83O_(CHROME_%2F_EDGE)-Extrator__NFSe.zip-0F3566?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/icaro-arch/compilador_NFSe/raw/main/extrator_NFSe/Extrator_NFSe.zip)
-[![Baixar Compilador Windows](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_BAIXAR_COMPILADOR_(WINDOWS)-Compilador__NFSe.exe-1B6B53?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/icaro-arch/compilador_NFSe/raw/main/compilador_NFSe/Compilador_NFSe.exe)
+[![Baixar Extensão Chrome/Edge](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_BAIXAR_EXTENS%C3%83O_(CHROME_%2F_EDGE)-Extrator__NFSe.zip-0F3566?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/icaro-arch/Suite_NFS-e_Nacional/raw/main/extrator_NFSe/Extrator_NFSe.zip)
+[![Baixar Compilador Windows](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_BAIXAR_COMPILADOR_(WINDOWS)-Compilador__NFSe.exe-1B6B53?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/icaro-arch/Suite_NFS-e_Nacional/raw/main/compilador_NFSe/Compilador_NFSe.exe)
 
 Solução ponta a ponta para **coleta automatizada em lote** e **auditoria fiscal/contábil** de **Notas Fiscais de Serviços Eletrônicas (NFS-e)** no **Padrão Nacional SPED (`nfse.gov.br`)**, organizada em dois módulos principais de igual protagonismo:
 
 | Módulo | Diretório | Download Direto | Função Principal |
 | :--- | :--- | :--- | :--- |
-| **1. 🧩 Extrator NFS-e** *(Extensão Manifest V3)* | [`extrator_NFSe/`](./extrator_NFSe) | **[📥 `Extrator_NFSe.zip`](https://github.com/icaro-arch/compilador_NFSe/raw/main/extrator_NFSe/Extrator_NFSe.zip)** | Filtra por **Data de Emissão**, percorre a paginação automaticamente e baixa lotes de **XML**, **PDF (DANFSe)** e **Planilha Resumo (`.csv`)** em `.zip` no Painel Municipal. |
-| **2. 📊 Compilador NFS-e** *(Desktop Windows / Python)* | [`compilador_NFSe/`](./compilador_NFSe) | **[📥 `Compilador_NFSe.exe`](https://github.com/icaro-arch/compilador_NFSe/raw/main/compilador_NFSe/Compilador_NFSe.exe)** | Lê lotes de arquivos `.xml` (ou `.csv` do ADN) e gera pastas de trabalho **Excel (`.xlsx`)** executivas com **4 abas**, **70 colunas** e **somas dinâmicas sob filtro (`SUBTOTAL`)**. |
+| **1. 🧩 Extrator NFS-e** *(Extensão Manifest V3)* | [`extrator_NFSe/`](./extrator_NFSe) | **[📥 `Extrator_NFSe.zip`](https://github.com/icaro-arch/Suite_NFS-e_Nacional/raw/main/extrator_NFSe/Extrator_NFSe.zip)** | Filtra por **Data de Emissão**, percorre a paginação automaticamente e baixa lotes de **XML**, **PDF (DANFSe)** e **Planilha Resumo (`.csv`)** em `.zip` no Painel Municipal. |
+| **2. 📊 Compilador NFS-e** *(Desktop Windows / Python)* | [`compilador_NFSe/`](./compilador_NFSe) | **[📥 `Compilador_NFSe.exe`](https://github.com/icaro-arch/Suite_NFS-e_Nacional/raw/main/compilador_NFSe/Compilador_NFSe.exe)** | Lê lotes de arquivos `.xml` (ou `.csv` do ADN) e gera pastas de trabalho **Excel (`.xlsx`)** executivas com **4 abas**, **70 colunas** e **somas dinâmicas sob filtro (`SUBTOTAL`)**. |
 
 ---
 
 ## 📁 Organização do Repositório
 
 ```text
-📦 compilador_NFSe/
+📦 Suite_NFS-e_Nacional/
 ├── 📁 extrator_NFSe/                   # MÓDULO 1: Extensão de Navegador (Chrome / Edge / Brave)
 │   ├── Extrator_NFSe.zip               # Pacote pronto para baixar e carregar no navegador
 │   ├── manifest.json                   # Configuração Manifest V3
@@ -76,7 +76,7 @@ O Portal da NFS-e não possui função nativa para baixar todas as notas de um p
 - **Alta Velocidade & Compactação `.ZIP` em Memória:** Fila paralela otimizada (`2x` simultâneos com intervalo de `100 ms` e *retry* automático) que empacota `/xml`, `/pdf` e `resumo_notas.csv` em um único download `.zip`.
 
 ### Como Instalar a Extensão no Chrome / Edge / Brave:
-1. **[📥 Baixe o `Extrator_NFSe.zip`](https://github.com/icaro-arch/compilador_NFSe/raw/main/extrator_NFSe/Extrator_NFSe.zip)** e extraia em uma pasta no seu computador *(ou utilize diretamente a pasta `extrator_NFSe` se clonou o repositório)*.
+1. **[📥 Baixe o `Extrator_NFSe.zip`](https://github.com/icaro-arch/Suite_NFS-e_Nacional/raw/main/extrator_NFSe/Extrator_NFSe.zip)** e extraia em uma pasta no seu computador *(ou utilize diretamente a pasta `extrator_NFSe` se clonou o repositório)*.
 2. No navegador, acesse `chrome://extensions/` (ou `edge://extensions/`).
 3. Ative a chave **Modo do desenvolvedor** (*Developer mode*) no canto superior direito.
 4. Clique em **Carregar sem compactação** (*Load unpacked*) e selecione a pasta [`extrator_NFSe`](./extrator_NFSe).
@@ -90,7 +90,7 @@ Para gerar a auditoria fiscal completa em Excel (`.xlsx`) a partir dos XMLs baix
 
 ### Passo a Passo Rápido:
 1. **Baixe o programa:**
-   - 👉 **[📥 Clique aqui para baixar o `Compilador_NFSe.exe`](https://github.com/icaro-arch/compilador_NFSe/raw/main/compilador_NFSe/Compilador_NFSe.exe)**
+   - 👉 **[📥 Clique aqui para baixar o `Compilador_NFSe.exe`](https://github.com/icaro-arch/Suite_NFS-e_Nacional/raw/main/compilador_NFSe/Compilador_NFSe.exe)**
 2. **Abra o aplicativo:** Dê dois cliques no arquivo `Compilador_NFSe.exe` baixado *(caso o Windows exiba o aviso padrão do SmartScreen, clique em "Mais informações" → "Executar assim mesmo")*.
 3. **Escolha a pasta de XMLs ou o arquivo `.CSV` (ADN):** Clique em **"Procurar Pasta..."** (para selecionar a pasta `xml/` extraída do `.zip` ou qualquer pasta com notas em `.xml`) ou em **"Selecionar CSV / XML..."** (para selecionar um arquivo `.csv` exportado do Ambiente de Dados Nacional — ADN com XMLs embutidos).
    - O programa fará a leitura instantânea das notas e **sugerirá automaticamente o nome do arquivo Excel** com base na empresa e competência identificadas.

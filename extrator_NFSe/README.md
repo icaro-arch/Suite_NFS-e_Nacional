@@ -1,6 +1,6 @@
 # 🧩 Extrator NFS-e — Extensão Manifest V3 (Painel Municipal)
 
-[![Baixar Extensão Chrome/Edge](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_BAIXAR_EXTENS%C3%83O_(CHROME_%2F_EDGE)-Extrator__NFSe.zip-0F3566?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/icaro-arch/compilador_NFSe/raw/main/extrator_NFSe/Extrator_NFSe.zip)
+[![Baixar Extensão Chrome/Edge](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_BAIXAR_EXTENS%C3%83O_(CHROME_%2F_EDGE)-Extrator__NFSe.zip-0F3566?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/icaro-arch/Suite_NFS-e_Nacional/raw/main/extrator_NFSe/Extrator_NFSe.zip)
 
 Extensão para navegadores baseados em Chromium (**Google Chrome**, **Microsoft Edge**, **Brave**) que automatiza a varredura de páginas, a **filtragem por Data de Emissão**, o download em lote de arquivos **XML** e **PDF (DANFSe)** e a geração de uma **Planilha Resumo (`.csv` compatível com Excel)** no **Painel Municipal da NFS-e** (`https://www.nfse.gov.br/PainelMunicipal/NFSe/Consulta`).
 
@@ -8,7 +8,7 @@ Extensão para navegadores baseados em Chromium (**Google Chrome**, **Microsoft 
 
 ## 🚀 Como Instalar Rapidamente (Sem Clonar o Repositório)
 
-1. **[📥 Clique aqui para baixar o `Extrator_NFSe.zip`](https://github.com/icaro-arch/compilador_NFSe/raw/main/extrator_NFSe/Extrator_NFSe.zip)** e extraia a pasta em seu computador.
+1. **[📥 Clique aqui para baixar o `Extrator_NFSe.zip`](https://github.com/icaro-arch/Suite_NFS-e_Nacional/raw/main/extrator_NFSe/Extrator_NFSe.zip)** e extraia a pasta em seu computador.
 2. No navegador, acesse `chrome://extensions/` (ou `edge://extensions/`).
 3. Ative a chave **Modo do desenvolvedor** (*Developer mode*) no canto superior direito.
 4. Clique em **Carregar sem compactação** (*Load unpacked*) e selecione a pasta extraída.
