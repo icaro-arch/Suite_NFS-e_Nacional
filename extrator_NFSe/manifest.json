@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Extrator NFS-e — Painel Municipal",
+  "version": "1.1.0",
+  "description": "Extração e download automatizado em lote de XML e PDF (DANFSe), filtro por Data de Emissão, paginação inteligente e planilha resumo CSV/Excel no Painel Municipal da NFS-e.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://www.nfse.gov.br/PainelMunicipal/*",
+    "https://*.nfse.gov.br/PainelMunicipal/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js"
+  },
+  "action": {
+    "default_title": "Extrator NFS-e — Painel Municipal"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.nfse.gov.br/PainelMunicipal/*"
+      ],
+      "css": [
+        "src/ui/panel.css"
+      ],
+      "js": [
+        "lib/jszip.min.js",
+        "src/content/xmlParser.js",
+        "src/content/scraper.js",
+        "src/content/downloader.js",
+        "src/content/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,463 @@
+/**
+ * @file panel.css
+ * @description Estilização isolada e responsiva para o painel flutuante do NFSe Bulk Downloader
+ * injetado no Painel Municipal da NFS-e (gov.br / PainelMunicipal).
+ */
+
+#nfse-bulk-root {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 390px;
+  max-width: calc(100vw - 32px);
+  z-index: 2147483640;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #1e293b;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.18), 0 8px 10px -6px rgba(15, 23, 42, 0.12);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  box-sizing: border-box;
+}
+
+#nfse-bulk-root *,
+#nfse-bulk-root *::before,
+#nfse-bulk-root *::after {
+  box-sizing: border-box;
+}
+
+#nfse-bulk-root.nfse-bulk-minimized {
+  width: 280px;
+}
+
+#nfse-bulk-root.nfse-bulk-minimized .nfse-bulk-body {
+  display: none !important;
+}
+
+/* Cabeçalho Gov.br / SEFIN Azul Escuro */
+.nfse-bulk-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px;
+  background: linear-gradient(135deg, #0f3566 0%, #1351b4 100%);
+  color: #ffffff;
+  cursor: move;
+  user-select: none;
+}
+
+.nfse-bulk-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.nfse-bulk-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.18);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.nfse-bulk-title {
+  font-weight: 600;
+  font-size: 13.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nfse-bulk-subtitle {
+  display: block;
+  font-size: 10.5px;
+  color: #bfdbfe;
+  font-weight: 400;
+}
+
+.nfse-bulk-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nfse-bulk-icon-btn {
+  background: rgba(255, 255, 255, 0.14);
+  border: none;
+  color: #ffffff;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  transition: background 0.15s ease;
+}
+
+.nfse-bulk-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* Corpo do Painel */
+.nfse-bulk-body {
+  padding: 12px 13px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+/* Barra de Contexto */
+.nfse-bulk-context-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 11.5px;
+  color: #1e3a8a;
+}
+
+.nfse-bulk-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #1351b4;
+  color: #ffffff;
+}
+
+/* Seções de Configuração */
+.nfse-bulk-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 9px 11px;
+}
+
+.nfse-bulk-section-title {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #64748b;
+  margin: 0 0 6px 0;
+}
+
+/* Filtro de Período (Data de Emissão) */
+.nfse-bulk-date-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.nfse-bulk-date-from-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nfse-bulk-since-forever-btn {
+  width: 100%;
+  height: 30px;
+  padding: 4px 8px;
+  border: 1px dashed #94a3b8;
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.nfse-bulk-since-forever-btn:hover:not(:disabled) {
+  border-color: #1351b4;
+  background: #eff6ff;
+  color: #1351b4;
+}
+
+.nfse-bulk-since-forever-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.nfse-bulk-date-input-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 4px;
+}
+
+.nfse-bulk-clear-date-btn {
+  height: 30px;
+  width: 26px;
+  flex-shrink: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nfse-bulk-clear-date-btn:hover:not(:disabled) {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+.nfse-bulk-hidden {
+  display: none !important;
+}
+
+/* Lista de Checkboxes e Destaque da Opção .ZIP */
+.nfse-bulk-checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nfse-bulk-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #1e293b;
+  margin: 0 !important;
+  font-weight: 500 !important;
+}
+
+.nfse-bulk-checkbox-item input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: #1351b4;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.nfse-bulk-zip-highlight {
+  margin-top: 2px !important;
+  padding: 6px 8px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 6px;
+  align-items: flex-start;
+}
+
+.nfse-bulk-zip-text-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.nfse-bulk-zip-title {
+  font-weight: 700;
+  color: #0f3566;
+  font-size: 12px;
+}
+
+.nfse-bulk-zip-hint {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #1d4ed8;
+  margin-top: 1px;
+}
+
+/* Campo Nome do Arquivo/Lote e Controles de Velocidade */
+.nfse-bulk-batchname-wrap {
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.nfse-bulk-controls-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 7px;
+}
+
+.nfse-bulk-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.nfse-bulk-field label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+  margin: 0 !important;
+}
+
+.nfse-bulk-input,
+.nfse-bulk-select {
+  width: 100%;
+  height: 30px;
+  padding: 4px 7px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 11.5px;
+  color: #0f172a;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.nfse-bulk-input:focus,
+.nfse-bulk-select:focus {
+  border-color: #1351b4;
+  box-shadow: 0 0 0 2px rgba(19, 81, 180, 0.15);
+}
+
+/* Métricas em Tempo Real */
+.nfse-bulk-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.nfse-bulk-stat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 7px;
+  padding: 5px 4px;
+  text-align: center;
+}
+
+.nfse-bulk-stat-value {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.nfse-bulk-stat-card.stat-xml .nfse-bulk-stat-value {
+  color: #0284c7;
+}
+
+.nfse-bulk-stat-card.stat-pdf .nfse-bulk-stat-value {
+  color: #16a34a;
+}
+
+.nfse-bulk-stat-card.stat-err .nfse-bulk-stat-value {
+  color: #dc2626;
+}
+
+.nfse-bulk-stat-label {
+  display: block;
+  font-size: 10px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+/* Barra de Progresso */
+.nfse-bulk-progress-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nfse-bulk-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11.5px;
+  color: #334155;
+  font-weight: 500;
+}
+
+.nfse-bulk-progress-track {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.nfse-bulk-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #1351b4 0%, #2563eb 100%);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+/* Botões de Ação */
+.nfse-bulk-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.nfse-bulk-btn {
+  flex: 1;
+  height: 34px;
+  border: none;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: filter 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+}
+
+.nfse-bulk-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nfse-bulk-btn-primary {
+  flex: 1.6;
+  background: #1351b4;
+  color: #ffffff;
+}
+
+.nfse-bulk-btn-primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.nfse-bulk-btn-warning {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+.nfse-bulk-btn-danger {
+  background: #dc2626;
+  color: #ffffff;
+}
