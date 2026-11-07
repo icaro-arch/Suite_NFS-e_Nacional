@@ -17,6 +17,22 @@ Solução ponta a ponta para **coleta automatizada em lote** e **auditoria fisca
 
 ---
 
+## 🛡️ Diferencial de Segurança: Zero Acesso ao seu Certificado Digital
+
+> [!IMPORTANT]
+> **Por que o nosso `Extrator NFS-e` NÃO pede o seu arquivo `.pfx` nem a sua senha?**
+> A maioria das ferramentas e extensões do mercado exige que você faça upload do seu **Certificado Digital (`.pfx`)** e digite sua **senha privada** para conectar à API do governo — expondo sua assinatura jurídica a terceiros e impedindo o uso por quem possui **Certificado A3 (Token USB / Smartcard)**.
+>
+> O **Extrator NFS-e** utiliza arquitetura de **Herança de Sessão (*Session Inheritance*) 100% Client-Side**:
+
+| Critério de Segurança e Uso | 🧩 Nosso `Extrator NFS-e` | ⚠️ Outras Extensões / Automadores de API |
+| :--- | :--- | :--- |
+| **Exposição do Certificado Digital** | **Zero:** Nunca solicita arquivo `.pfx`, senha ou PIN. Opera apenas sobre a aba já autenticada pelo próprio navegador (`credentials: 'include'`). | **Alto Risco:** Exigem upload da chave privada `.pfx` e armazenamento da senha em texto/memória. |
+| **Suporte a Certificado A3 (Token USB / Cartão)** | **100% Compatível:** Funciona nativamente com Token A3, Certificado A1, Certificado em Nuvem e Login Gov.br. | **Incompatível:** Não funcionam com Token A3 físico pois a chave privada não pode ser exportada em arquivo `.pfx`. |
+| **Privacidade de Dados (LGPD)** | **100% Local:** Os XMLs e PDFs são baixados direto de `nfse.gov.br` para a memória RAM do seu navegador, sem servidores intermediários. | Frequentemente trafegam suas notas e credenciais por servidores externos de terceiros. |
+
+---
+
 ## 📁 Organização do Repositório
 
 ```text
