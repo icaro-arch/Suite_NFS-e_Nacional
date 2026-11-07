@@ -7,6 +7,7 @@ xml_notas/
 lotes_xml/
 *.xml
 !examples/*.xml
+!compilador_NFSe/examples/*.xml
 
 # Planilhas e exportações geradas com dados reais
 *.xlsx
@@ -18,6 +19,7 @@ lotes_xml/
 # ==============================================================================
 *.exe
 !Compilador_NFSe.exe
+!compilador_NFSe/Compilador_NFSe.exe
 build/
 build_tmp/
 dist/

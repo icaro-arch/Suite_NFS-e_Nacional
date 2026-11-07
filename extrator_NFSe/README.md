@@ -1,10 +1,22 @@
-# Extrator NFS-e — Extensão Manifest V3 (Painel Municipal)
+# 🧩 Extrator NFS-e — Extensão Manifest V3 (Painel Municipal)
+
+[![Baixar Extensão Chrome/Edge](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_BAIXAR_EXTENS%C3%83O_(CHROME_%2F_EDGE)-Extrator__NFSe.zip-0F3566?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/icaro-arch/compilador_NFSe/raw/main/extrator_NFSe/Extrator_NFSe.zip)
 
 Extensão para navegadores baseados em Chromium (**Google Chrome**, **Microsoft Edge**, **Brave**) que automatiza a varredura de páginas, a **filtragem por Data de Emissão**, o download em lote de arquivos **XML** e **PDF (DANFSe)** e a geração de uma **Planilha Resumo (`.csv` compatível com Excel)** no **Painel Municipal da NFS-e** (`https://www.nfse.gov.br/PainelMunicipal/NFSe/Consulta`).
 
 ---
 
-## Principais Funcionalidades
+## 🚀 Como Instalar Rapidamente (Sem Clonar o Repositório)
+
+1. **[📥 Clique aqui para baixar o `Extrator_NFSe.zip`](https://github.com/icaro-arch/compilador_NFSe/raw/main/extrator_NFSe/Extrator_NFSe.zip)** e extraia a pasta em seu computador.
+2. No navegador, acesse `chrome://extensions/` (ou `edge://extensions/`).
+3. Ative a chave **Modo do desenvolvedor** (*Developer mode*) no canto superior direito.
+4. Clique em **Carregar sem compactação** (*Load unpacked*) e selecione a pasta extraída.
+5. Clique no ícone da extensão na barra do navegador para abrir `https://www.nfse.gov.br/PainelMunicipal/NFSe/Consulta`.
+
+---
+
+## 🎯 Principais Funcionalidades
 
 1. **Redirecionamento e Escopo Exclusivo (`/PainelMunicipal`):**
    - Ao clicar no ícone da extensão na barra do navegador, abre diretamente `https://www.nfse.gov.br/PainelMunicipal/NFSe/Consulta` (ou alterna o painel flutuante caso você já esteja na página).
@@ -22,11 +34,12 @@ Extensão para navegadores baseados em Chromium (**Google Chrome**, **Microsoft 
 
 ---
 
-## Estrutura do Diretório
+## 📁 Estrutura do Diretório
 
 ```text
 extrator_NFSe/
 ├── manifest.json               # Configuração Chrome Extension Manifest V3
+├── Extrator_NFSe.zip           # Pacote pronto para download direto e instalação
 ├── lib/
 │   └── jszip.min.js            # JSZip v3.10.1 local para compactação em memória
 ├── src/
@@ -41,12 +54,3 @@ extrator_NFSe/
 │       └── service-worker.js   # Atalho na barra do navegador e estado inicial
 └── README.md
 ```
-
----
-
-## Como Instalar / Recarregar no Chrome ou Edge
-
-1. Acesse `chrome://extensions/` (ou `edge://extensions/`).
-2. Ative o **Modo do desenvolvedor** (*Developer mode*) no canto superior direito.
-3. Clique em **Carregar sem compactação** (*Load unpacked*) e selecione a pasta:
-   `d:\My Files\SEFIN\extrator_NFSe`
